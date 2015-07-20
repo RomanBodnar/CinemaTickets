@@ -1,0 +1,56 @@
+﻿@model CinemaTickets.Domain.Entities.Seance
+@{
+    ViewBag.Title = "Замовити квиток на фільм " + Model.Movie.Name;
+}
+
+<div class="container">
+    <div class="cinemadetails">
+        <h2>Замовити квиток на фільм @Model.Movie.Name</h2>
+        <h5>Дата сеансу: @Model.Date.ToShortDateString() <br />Час сеансу: @Model.Time.ToString()</h5>
+        <h5>Кінотеатр: @Model.Hall.Cinema.Name Зал: @Model.Hall.Name</h5>
+        <h5>Ціна квитка на сеанс: @Model.Price.ToString() </h5>
+        <h5>Вільних місць в залі: @Model.SeatsLeft</h5>
+    </div>
+        <div class="form-horizontal">
+            @using (Html.BeginForm("AddTicket", "Order"))
+            {
+                <fieldset id="ticketSet">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Виберіть ряд</label>
+                        @Html.DropDownList("Row", ViewBag.Rows as SelectList, new { id = "row", @class = "form-control" })
+                        <label class="control-label col-md-2">Виберіть місце</label>
+                        @Html.DropDownList("Seat", ViewBag.Seats as SelectList, new { id = "seat", @class = "form-control" })
+                    </div>
+                    <p><input type="submit" value="ОК" class="btn btn-primary" /></p>
+                </fieldset>
+            }
+
+        </div>
+
+
+    </div>
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#row').change(function () {
+            // get selected row id
+            var id = $(this).val();
+            
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetSeatsForRow")' + '?seanceId=' + @Model.Id + '&rowId=' + id,
+                success: function (data) {
+
+                    // заменяем содержимое присланным частичным представлением
+                    $('#seat').replaceWith(data);
+                }
+            });
+        });
+    })
+</script>
+
+

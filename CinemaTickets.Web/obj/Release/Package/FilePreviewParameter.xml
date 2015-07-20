@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/CinemaTickets" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\programs\\CinemaTickets\\CinemaTickets\.Web\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\programs\\CinemaTickets\\CinemaTickets\.Web\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="CinemaTicketsDB-Web.config Connection String" description="" value="Data Source=|DataDirectory|CinemaTicketsDatabase.mdf;Initial Catalog=CinemaTicketsDatabase;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\programs\\CinemaTickets\\CinemaTickets\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CinemaTicketsDB']/@connectionString" />
+  </parameter>
+  <parameter name="IdentityDb-Web.config Connection String" description="" value="Data Source=|DataDirectory|IdentityDb.mdf;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\programs\\CinemaTickets\\CinemaTickets\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='IdentityDb']/@connectionString" />
+  </parameter>
+</parameters>

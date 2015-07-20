@@ -1,0 +1,40 @@
+﻿@model CinemaTickets.Domain.Entities.Cinema
+@using CinemaTickets.Domain.Entities;
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Зали";
+}
+
+<h2>Зали в кінотеатрі @Model.Name</h2>
+<div>
+
+    @foreach (Hall hall in Model.Halls)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                <label>Назва:</label>
+            </dt>
+
+            <dd>
+                @hall.Name
+            </dd>
+
+            <dt>
+                <label>Кількість місць:</label>
+            </dt>
+
+            <dd>
+                @hall.Seats.ToString()
+            </dd>
+
+            @Html.ActionLink("Редагувати", "EditHall", new { hallId = hall.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Керування рядами", "ViewRows", new { hallId = hall.Id }, new { @class = "btn btn-info" })
+
+            @Html.ActionLink("Видалити", "DeleteHall", new { hallId = hall.Id }, new { @class = "btn btn-danger" })
+        </dl>
+    }
+</div>
+    @Html.ActionLink("Додати зал", "CreateHall", new { cinemaId = Model.Id }, new { @class = "btn btn-success" })
+<p>
+
+</p>

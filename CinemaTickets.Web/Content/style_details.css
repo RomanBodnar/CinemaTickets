@@ -1,0 +1,791 @@
+
+
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+.lazy { display: none; }
+
+a {
+	color: #333;
+}
+
+a[href] {
+	color: #0063DC;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #0063DC;
+}
+
+.clear {
+	clear: both;
+}
+img {
+	border: 0;
+}
+
+#mainlogo {
+	width: 118px;
+	height: 25px;
+}
+
+/* TOP MENU */
+#topmenu {
+    height: 47px;
+    line-height: 47px;
+
+    background-image: url(/images/header-bg.png);
+    background-repeat: no-repeat;
+    background-position: 610px 0;
+}
+
+ul#topmenu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#topmenu li {
+    float: left;
+    display: block;
+}
+
+#topmenu .divider {
+    background: url("/images/topmenu/divider.png") no-repeat left center;
+}
+
+#topmenu .m-item {
+    padding: 0 18px 0 16px;
+    line-height: 47px;
+}
+
+#topmenu .m-item-last {
+    line-height: 47px;
+    float: right;
+}
+
+#topmenu .m-item img {
+    vertical-align: middle;
+}
+
+#topmenu .m-item, #topmenu a {
+    color: #fff;
+    /*font-weight: bold;*/
+    font-family: verdana, arial, helvetica, sans-serif;
+    text-decoration: none;
+}
+
+#topmenu .icon {
+    background-image: url("/images/topmenu/icons.png");
+    background-repeat: no-repeat;
+}
+
+#topmenu .movies {
+    padding-left: 26px;
+    background-position: 0 -4px;
+}
+#topmenu .cinema {
+    padding-left: 26px;
+    background-position: 0 -28px;
+}
+#topmenu .tickets {
+    padding-left: 30px;
+    background-position: 0 -52px;
+}
+
+#language-selector {
+    background-color: #7C755A;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* EOF TOP MENU */
+
+#content {
+    min-height: 400px;
+}
+
+/* */
+#footer .copyright {
+	color: #ddd;
+	float: left;
+    margin-bottom: 16px;
+}
+
+#footer a {
+	color: #FFFF9C
+}
+#footer .links {
+	line-height: 20px;
+	float: right;
+}
+
+#footer {
+	padding-top: 16px;
+	padding-bottom: 16px;
+    height: 96px;
+    background-color: #7C755A;
+	position: relative;
+	margin-top: 60px;
+	clear:both;
+}
+
+#footer .inner {
+	clear: both;
+	height: 46px;
+}
+
+#footer .logo {
+	float: left;
+	width: 171px;
+	height: 20px;
+}
+
+#content .inner,#header .inner,#footer .inner {
+	width: 965px;
+	margin-right: auto !important;
+	margin-left: auto !important;
+}
+
+#header .inner {
+	margin-right: 16px;
+	padding-left: 16px;
+}
+
+#header {
+	background-image: url(/images/topmenu/bg.png);
+	height: 47px;
+	background-color: #7C755A;
+	margin-bottom: 20px;
+}
+
+#logo {
+	margin-top: 10px;
+	float: left;
+	width: 180px;
+}
+
+span.input-quickclear {
+	display: inline;
+}
+
+.input-quickclear input {
+	height: 24px;
+	line-height: 18px;
+	padding-right: 16px;
+}
+
+.input-quickclear a.clear-button {
+	cursor: pointer;
+	position: absolute;
+	width: 10px;
+	height: 24px;
+	display: inline-block;
+	background: url("/images/ui/icon-clear-input.gif") no-repeat left center;
+	margin-left: -20px;
+}
+
+a.internal {
+	text-decoration: none;
+	border-bottom: 1px dotted;
+	cursor: pointer;
+}
+
+ul.errors li {
+	color: #ff0000;
+}
+
+#my-tickets a {
+	color: #F1FCC1;
+}
+
+#my-tickets {
+	font-weight: bold;
+	font-size: 11pt;
+	background-image: url(/images/my-tickets.png);
+	padding-left: 30px;
+	background-repeat: no-repeat;
+	float: right;
+	margin-top: 6px;
+}
+
+.showtimes-select {
+	width: 130px;
+	margin-left: 26px;
+}
+
+/*   */
+.dropdown-h {
+	float: left;
+}
+
+.dropdown-h .dropdown-container {
+	display: block;
+	z-index: 1000;
+	overflow: hidden;
+}
+
+.dropdown-h .opened-tmp {
+	border: 4px solid rgba(105, 102, 97, 0.6);
+	margin: -4px;
+}
+
+.dropdown-h .dropdown-caption {
+	padding-left: 8px;
+	padding-right: 8px;
+	cursor: pointer;
+	font-weight: bold;
+	color: #735725;
+	border: 2px solid #FBC76B;
+	background-color: #E6AB36;
+	background-image: url(dropdown/bg.png);
+	background-position: 0px 0px;
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	line-height: 22px;
+	z-index: 1010;
+}
+
+.dropdown-h .dropdown-caption label {
+	cursor: pointer;
+	display: block;
+	background-image: url(dropdown/down-arrow.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+.dropdown-h .dropdown-caption:hover,.dropdown-h .hover {
+	background-position: 0px -56px;
+}
+
+.dropdown-h .dropdown-list li {
+	font-weight: bold;
+	line-height: 24px;
+	display: block;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	color: #555;
+	cursor: pointer;
+}
+
+.dropdown-h .dropdown-list li:hover {
+	background: #fbc211 !important;
+}
+
+.dropdown-h .dropdown-list {
+	padding: 0;
+	margin: 0;
+	background: #FFE9AB !important;
+	position: relative;
+	display: none;
+}
+
+.dropdown-h .dropdown-list-container {
+	background: #FFE9AB !important;
+	overflow: hidden;
+	max-height: 300px;
+	position: absolute;
+	z-index: 1010;
+}
+
+.button-tickets {
+	cursor: pointer;
+}
+
+/* show */
+.show-block .poster img {
+	border: 1px solid #999;
+	width: 232px;
+	height: 306px;
+}
+
+.show-block .poster {
+	float: left;
+	width: 232px;
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+	background-color: white;
+	/*-webkit-border-radius: 3px;*/
+	/*-khtml-border-radius: 3px;*/
+	/*-moz-border-radius: 3px;*/
+	/*border-radius: 3px;*/
+	-webkit-box-shadow: 2px 2px 10px 1px rgba(50, 50, 50, .2);
+	-moz-box-shadow: 2px 2px 10px 1px rgba(50, 50, 50, .2);
+	box-shadow: 2px 2px 10px 1px rgba(50, 50, 50, .2);
+	padding: 16px;
+	height: 306px;
+}
+
+.show-block dt {
+	color: black;
+	font-weight: bold;
+	float: left;
+	display: block;
+	margin-right: 8px;
+}
+
+.show-block dd {
+	margin: 0;
+}
+
+.show-block dd:after {
+	content: ".";
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.show-block .content {
+	margin-left: 280px;
+}
+
+.show-block .show-title {
+	padding-top: 4px;
+	display: block;
+	font-size: 1.8em;
+	font-weight: bold;
+	font-family: Verdana, Geneva, sans-serif;
+    line-height: 1.2em;
+}
+
+.show-block .show-original-title {
+	color: #777;
+	display: block;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.show-block .plot {
+	padding: 8px 0 8px 0;
+}
+
+.show-block .navigation {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	font-size: 125%;
+	padding-top: 4px;
+}
+
+.show-block .navigation a:hover {
+	color: #FF0084;
+}
+
+.show-block .navigation a {
+}
+
+.show-block .navigation .current {
+	cursor: default;
+	background-color: #FF9D00;
+	color: #fff;
+
+}
+
+.show-block .navigation li {
+	display: inline;
+}
+
+.show-block .navigation li {
+	padding: 6px 16px 6px 16px;
+	background-color: #EEE;
+	font-weight: bold;
+	color: #333;
+}
+
+.navigation h3 {
+	padding: 0;
+	margin: 0;
+	display: inline;
+	font-size: 10pt;
+}
+/* */
+
+.techno-2d, .techno-dolby-cinema {}
+
+/*.techno-3d, .techno-dolby-3d, .techno-xpand, .techno-reald, .techno-dbox-3d {*/
+	/*background: url("/images/technology-3d.png") no-repeat scroll 0 center transparent;*/
+/*}*/
+
+/*.techno-imax-3d {*/
+	/*background: url("/images/technology-imax3d.png") no-repeat scroll 0 center transparent;*/
+/*}*/
+
+.techno-imax {
+/*
+	background: url("/images/in3d.png") no-repeat scroll 0 center transparent;
+*/
+}
+
+#showtimes .caption {
+	font-weight: bold;
+	display: inline;
+}
+
+/* Cinema block */
+.cinema-block {
+	margin-top: 16px;
+}
+
+.cinema-block .cinema-icon {
+	display: inline-block;
+	float: left;
+	padding: 8px;
+	width: 24px;
+}
+
+.cinema-block .header {
+	background-color: #EEE;
+	/*-moz-border-radius-topleft: 3px;*/
+	/*-webkit-border-top-left-radius: 3px;*/
+	/*-khtml-border-top-left-radius: 3px;*/
+	/*border-top-left-radius: 3px;*/
+	/*-moz-border-radius-topright: 3px;*/
+	/*-webkit-border-top-right-radius: 3px;*/
+	/*-khtml-border-top-right-radius: 3px;*/
+	/*border-top-right-radius: 3px;*/
+	margin-bottom: 6px;
+	padding: 8px;
+}
+
+.cinema-block .address {
+	font-size: 8pt;
+	margin-left: 40px;
+}
+.cinema-block .cinema-title {
+	font-size: 12pt;
+	font-weight: bold;
+	line-height: 38px;
+}
+
+.cinema-block ul.showtimes-block,.cinema-block ul.showtimes-day-block {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+.cinema-block ul.showtimes-day-block {
+	margin-left: 180px;
+}
+
+.cinema-block ul.showtimes-day-block li {
+	display: inline-block;
+	width: 120px;
+    height: 30px;
+}
+
+.cinema-block .showtimes-day {
+	border-bottom: 1px dotted #BBB;
+	margin-bottom: 8px;
+}
+
+.cinema-block .showtimes-day .date {
+    display: inline-block;
+    width: 180px;
+    float: left;
+}
+
+.cinema-block .show-format {
+    background-color: #9ECDFF;
+    padding: 2px 5px 2px 5px;
+    font-size: 7pt;
+    color: #fff;
+    max-width: 60px;
+    display: inline-block;
+    white-space: normal;
+    -o-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    vertical-align: top;
+    line-height: 10px;
+}
+
+
+.cinema-block .past-show-time {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.no-showtimes {
+	margin-top: 36px;
+	padding: 24px;
+	font-weight: bold;
+	font-size: 12pt;
+	/*-webkit-border-radius: 3px;*/
+	/*-khtml-border-radius: 3px;*/
+	/*-moz-border-radius: 3px;*/
+	border-radius: 3px;
+	background-color: #eee;
+	text-align: center;
+}
+
+/**/
+ul.seanses {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ui-dialog {
+	position: fixed;
+}
+
+/* cinema show block */
+.cinema-show-block .poster img {
+	border: 1px solid #999;
+}
+
+.cinema-show-block img {
+	width: 120px;
+	height: 162px;
+}
+
+.cinema-show-block .poster {
+	float: left;
+	width: 120px;
+	height: 162px;
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+	background-color: white;
+	/*-webkit-border-radius: 3px;*/
+	/*-khtml-border-radius: 3px;*/
+	/*-moz-border-radius: 3px;*/
+	/*border-radius: 3px;*/
+	-webkit-box-shadow: 2px 2px 10px 1px rgba(50, 50, 50, .2);
+	-moz-box-shadow: 2px 2px 10px 1px rgba(50, 50, 50, .2);
+	box-shadow: 2px 2px 10px 1px rgba(50, 50, 50, .2);
+	padding: 16px;
+}
+
+.cinema-show-block dt {
+	color: black;
+	font-weight: bold;
+	float: left;
+	display: block;
+	margin-right: 8px;
+}
+
+.cinema-show-block dd {
+	margin: 0;
+}
+
+.cinema-show-block dd:after {
+	content: ".";
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.cinema-show-block .content {
+	margin-left: 180px;
+}
+
+.cinema-show-block .show-title {
+	padding-top: 4px;
+	display: block;
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+.cinema-show-block .show-original-title {
+	color: #777;
+	display: block;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.cinema-block ul.showtimes-block,.cinema-block ul.showtimes-day-block {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+.cinema-block ul.showtimes-day-block {
+	margin-left: 180px;
+}
+
+
+h1 {
+	font-size: 1.8em;
+	font-weight: bold;
+	font-family: Verdana, Geneva, sans-serif;
+	color: #302C1C;
+}
+
+.city-caption {
+	font-weight: bold;
+}
+
+.cinema-city {
+	margin-top: 4px;
+	margin-bottom: 10px;
+}
+
+#showtimes-choose-city {
+
+}
+
+.window {
+	position: relative;
+	min-width: 400px;
+	padding: 14px;
+	background: #fff;
+	border: 3px solid #bbb;
+	/* 	border-radius: 4px; */
+}
+
+.window-close {
+	position: absolute;
+	right: -9px;
+	top: -9px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+	font-size: 12pt;
+	border: 2px solid #BBB;
+	text-align: center;
+	line-height: 14px;
+	vertical-align: top;
+	height: 15px;
+	display: block;
+	background-color: #F17B65;
+	width: 15px;
+}
+
+.window-close:hover {
+	background-color: #FF826B;
+}
+
+
+#content-block {
+    padding: 8px;
+}
+
+#content-block h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: Verdana, Geneva, sans-serif;
+    color: #302C1C;
+}
+
+.info-block-reducer {
+	position: relative;
+	display: block;
+	max-height: 140px;
+	overflow: hidden;
+}
+
+#show-block .show-info-block {
+}
+
+#show-block .read-more {
+	display: none;
+	background: transparent url("/images/zigzag.png") repeat-x 0 10px;
+	position: relative;
+	top: -12px;
+	text-align: center;
+	opacity: 0.92;
+}
+
+#show-block .read-more a {
+	display: inline-block;
+	border: 1px solid #999;
+	background-color: #fff;
+	padding: 2px 20px;
+	color: #000;
+	font-size: 0.8em;
+	text-decoration: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+/*
+.show-info-block .reducer2 {
+	display: none;
+	position: absolute;
+	bottom: -22px;
+	left: 0;
+	width: 100%;
+	height: 3em;
+	padding: 0;
+	margin: 0;
+	background: transparent url("/images/cut-here.png") repeat-x 0px 0px;
+}
+*/
+
+.show-info-block dt::after {
+    content: ":";
+}
+
+
+
+/* theater header */
+
+#cinema-header {
+    width: 680px;
+    float: left;
+}
+
+#cinema-header .logo {
+    display: inline-block;
+    width: 160px;
+    height: 80px;
+    float:left;
+}
+
+#cinema-header .caption {
+    font-size: 1.8em;
+    font-weight: bold;
+    line-height: 1em;
+    font-family: Verdana,Geneva,Kalimati,sans-serif;
+    color: #302C1C;
+    display: block;
+    padding: 0;
+    margin: 0 0 10px 200px;
+}
+
+#cinema-header .city {
+    margin-left: 200px;
+    display: block;
+}
+
+#cinema-header .website {
+    margin-left: 200px;
+    display: block;
+}
+
+#cinema-header .address {
+    display: inline;
+}
+
+#cinema-header .phone {
+    margin-left: 200px;
+    display: block;
+}
+/* end of theater header */
+
+/* map pointer */
+.view-on-map {
+    border-bottom: dotted 1px;
+    display: inline-block;
+    cursor: pointer;
+}
+.view-on-map:before {
+    content: "";
+    background: url(/images/map-marker.png) center center no-repeat;
+    cursor: pointer;
+    width: 18px;
+    height: 17px;
+    display: inline-block;
+    border-bottom: none;
+}

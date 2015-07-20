@@ -1,0 +1,7 @@
+﻿@model IEnumerable<CinemaTickets.Domain.Entities.Seat>
+<select id="seat" name="Seat" class="form-control">
+    @foreach (var item in Model)
+    {
+        <option value="@item.Id">@item.Number</option>
+    }
+</select>

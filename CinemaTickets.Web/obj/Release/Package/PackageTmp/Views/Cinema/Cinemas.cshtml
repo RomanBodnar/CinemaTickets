@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CinemaTickets.Domain.Entities.Cinema>
+@{
+    ViewBag.Title = "Cinemas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Список кінотеатрів</h2>
+<div class="col-lg-10">
+    <ul class="circle">
+        @foreach (var cinema in Model)
+        {
+            <li>
+                @Html.ActionLink(cinema.Name.ToString(), "CinemaDetails", new { cinemaId = cinema.Id })
+            </li>
+        }
+    </ul>
+</div>

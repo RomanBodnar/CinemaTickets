@@ -1,0 +1,69 @@
+﻿@model CinemaTickets.Web.Models.MovieSeances
+@{
+    ViewBag.Title = "Замовлення";
+}
+
+
+
+<div class="text-center">
+    <h1>Замовити квиток на фільм @Model.Movie.Name</h1>
+    <h1 class="show-title"></h1>
+</div>
+<div class="col-sm-4">
+    @if (Model.Movie.ImageData == null)
+    {
+        <div class="form-control-static col-md-10">Постер відсутній</div>
+    }
+    else
+    {
+        @Html.Raw("<img src=\"data:" + Model.Movie.ImageMimeType + ";base64," + Convert.ToBase64String(Model.Movie.ImageData) + "\" />")
+    }
+</div>
+<div class="show-info-block">
+    <dl>
+        <dt>Тривалість:</dt>
+        <dd>@Model.Movie.Duration<span> хв.</span></dd>
+        <dt>Жанр:</dt>
+        <dd>@Model.Movie.Genre</dd>
+        <dt>Режисер:</dt>
+        <dd>@Model.Movie.Director</dd>
+        <dt>Сценарій:</dt>
+        <dd>@Model.Movie.Scenario</dd>
+        <dt>Дата виходу</dt>
+        <dd>@Model.Movie.ReleaseDate.Day<span>.</span>@Model.Movie.ReleaseDate.Month <span>.</span>@Model.Movie.ReleaseDate.Year</dd>
+        <dt>В ролях:</dt>
+        <dd>@Model.Movie.Actors</dd>
+        <dt>Опис:</dt>
+        <dd>@Model.Movie.Description</dd>
+    </dl>
+</div>
+@foreach (var cinema in Model.Cinemas)
+{
+    @cinema.Cinema.Name
+    <table>
+        @*Replace with foreach*@
+        @foreach (var dateseance in cinema.DateSeances)
+        {
+            <tr>
+                <td>
+                    @*cinema.Seances[i].Date.Day<span>.</span>@cinema.Seances[i].Date.Month*@
+                    @dateseance.Date.ToShortDateString()
+                    @dateseance.Date.DayOfWeek
+                </td>
+
+                <td>
+                    @foreach (var seance in dateseance.Seances)
+                    {
+                        @Html.ActionLink(seance.Time.ToString(), "SeanceOrder", "Order", new { seanceId = seance.Id }, null)
+                        <span>,</span>
+                    }
+                    @*ActionLink
+                        @cinema.DateSeances[i].Time.ToString()
+                        @*cinema.Seances[i].Time.Hours<span>:</span> @cinema.Seances[i].Time.Minutes*@
+                </td>
+
+            </tr>
+        }
+    </table>
+}
+

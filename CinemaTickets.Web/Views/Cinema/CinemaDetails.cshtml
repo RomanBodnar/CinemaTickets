@@ -1,0 +1,36 @@
+﻿@model CinemaTickets.Web.Models.CinemaSeances
+@using System.Globalization
+@{
+    ViewBag.Title = "CinemaDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="cinemadetails">
+    <h5>@Model.Cinema.Name</h5>
+    <span>@Model.Cinema.City, @Model.Cinema.Street</span>
+</div>
+<hr />
+<table>
+    @*Replace with foreach*@
+    @foreach (var dateseance in Model.DateSeances)
+    {
+        <tr>
+            <td>
+                @*cinema.Seances[i].Date.Day<span>.</span>@Model.Seances[i].Date.Month*@
+                @dateseance.Date.ToShortDateString()
+                @DateTimeFormatInfo.CurrentInfo.GetDayName(dateseance.Date.DayOfWeek)
+            </td>
+
+            <td>
+                @foreach (var seance in dateseance.Seances)
+                {
+                    @Html.ActionLink(seance.Time.ToString(), "SeanceOrder", "Order", new { seanceId = seance.Id }, null)
+                    <span>  Фільм:  </span><span>@seance.Movie.Name</span><span>  Зал:  </span>   <span>@seance.Hall.Name</span>
+                }
+                @*ActionLink
+                    @Model.DateSeances[i].Time.ToString()
+                    @*cinema.Seances[i].Time.Hours<span>:</span> @Model.Seances[i].Time.Minutes*@
+            </td>
+
+        </tr>
+    }
+</table>

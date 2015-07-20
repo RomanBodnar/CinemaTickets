@@ -1,0 +1,36 @@
+﻿@model CinemaTickets.Domain.Entities.Hall
+@using CinemaTickets.Domain.Entities;
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Зали";
+    IEnumerable<Row> rows = Model.Rows.OrderBy(item => item.Number);
+}
+
+<h2>Ряди в залі @Model.Name</h2>
+<div>
+
+    @foreach (Row Row in rows)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                <label>Назва:</label>
+            </dt>
+
+            <dd>
+                @Row.Number
+            </dd>
+
+            <dt>
+                <label>Кількість місць:</label>
+            </dt>
+
+            <dd>
+                @Row.SeatsNumber.ToString()
+            </dd>
+            @Html.ActionLink("Редагувати", "EditRow", new { RowId = Row.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Видалити", "DeleteRow", new { RowId = Row.Id }, new { @class = "btn btn-danger" })
+        </dl>
+    }
+
+</div>
+@Html.ActionLink("Додати ряд", "CreateRow", new { hallId = Model.Id }, new {  @class = "btn btn-success" })

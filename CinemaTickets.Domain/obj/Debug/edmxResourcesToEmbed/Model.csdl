@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaTicketsDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cinemas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Halls" Relationship="Self.FK_dbo_Halls_dbo_Cinemas_CinemaId" FromRole="Cinemas" ToRole="Halls" />
+  </EntityType>
+  <EntityType Name="Halls">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seats" Type="Int32" Nullable="false" />
+    <Property Name="CinemaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cinemas" Relationship="Self.FK_dbo_Halls_dbo_Cinemas_CinemaId" FromRole="Halls" ToRole="Cinemas" />
+    <NavigationProperty Name="Rows" Relationship="Self.FK_dbo_Rows_dbo_Halls_HallId" FromRole="Halls" ToRole="Rows" />
+    <NavigationProperty Name="Seances" Relationship="Self.FK_dbo_Seances_dbo_Halls_HallId" FromRole="Halls" ToRole="Seances" />
+  </EntityType>
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReleaseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Duration" Type="Int32" Nullable="false" />
+    <Property Name="Genre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Director" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Scenario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Actors" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Seances" Relationship="Self.FK_dbo_Seances_dbo_Movies_MovieId" FromRole="Movies" ToRole="Seances" />
+  </EntityType>
+  <EntityType Name="Rows">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="SeatsNumber" Type="Int32" Nullable="false" />
+    <Property Name="HallId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Halls" Relationship="Self.FK_dbo_Rows_dbo_Halls_HallId" FromRole="Rows" ToRole="Halls" />
+    <NavigationProperty Name="Seats" Relationship="Self.FK_dbo_Seats_dbo_Rows_RowId" FromRole="Rows" ToRole="Seats" />
+  </EntityType>
+  <EntityType Name="Seances">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="SeatsLeft" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="HallId" Type="Int32" Nullable="false" />
+    <Property Name="MovieId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Halls" Relationship="Self.FK_dbo_Seances_dbo_Halls_HallId" FromRole="Seances" ToRole="Halls" />
+    <NavigationProperty Name="Movies" Relationship="Self.FK_dbo_Seances_dbo_Movies_MovieId" FromRole="Seances" ToRole="Movies" />
+    <NavigationProperty Name="Seats" Relationship="Self.FK_dbo_Seats_dbo_Seances_SeanceId" FromRole="Seances" ToRole="Seats" />
+  </EntityType>
+  <EntityType Name="Seats">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="IsBooked" Type="Boolean" Nullable="false" />
+    <Property Name="RowId" Type="Int32" Nullable="false" />
+    <Property Name="SeanceId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rows" Relationship="Self.FK_dbo_Seats_dbo_Rows_RowId" FromRole="Seats" ToRole="Rows" />
+    <NavigationProperty Name="Seances" Relationship="Self.FK_dbo_Seats_dbo_Seances_SeanceId" FromRole="Seats" ToRole="Seances" />
+  </EntityType>
+  <Association Name="FK_dbo_Halls_dbo_Cinemas_CinemaId">
+    <End Role="Cinemas" Type="Self.Cinemas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Halls" Type="Self.Halls" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinemas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Halls">
+        <PropertyRef Name="CinemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Rows_dbo_Halls_HallId">
+    <End Role="Halls" Type="Self.Halls" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Rows" Type="Self.Rows" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Halls">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rows">
+        <PropertyRef Name="HallId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Seances_dbo_Halls_HallId">
+    <End Role="Halls" Type="Self.Halls" Multiplicity="1" />
+    <End Role="Seances" Type="Self.Seances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Halls">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Seances">
+        <PropertyRef Name="HallId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Seances_dbo_Movies_MovieId">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Seances" Type="Self.Seances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Seances">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Seats_dbo_Rows_RowId">
+    <End Role="Rows" Type="Self.Rows" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Seats" Type="Self.Seats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rows">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Seats">
+        <PropertyRef Name="RowId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Seats_dbo_Seances_SeanceId">
+    <End Role="Seances" Type="Self.Seances" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Seats" Type="Self.Seats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seances">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Seats">
+        <PropertyRef Name="SeanceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CinemaTicketsDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cinemas" EntityType="Self.Cinemas" />
+    <EntitySet Name="Halls" EntityType="Self.Halls" />
+    <EntitySet Name="Movies" EntityType="Self.Movies" />
+    <EntitySet Name="Rows" EntityType="Self.Rows" />
+    <EntitySet Name="Seances" EntityType="Self.Seances" />
+    <EntitySet Name="Seats" EntityType="Self.Seats" />
+    <AssociationSet Name="FK_dbo_Halls_dbo_Cinemas_CinemaId" Association="Self.FK_dbo_Halls_dbo_Cinemas_CinemaId">
+      <End Role="Cinemas" EntitySet="Cinemas" />
+      <End Role="Halls" EntitySet="Halls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Rows_dbo_Halls_HallId" Association="Self.FK_dbo_Rows_dbo_Halls_HallId">
+      <End Role="Halls" EntitySet="Halls" />
+      <End Role="Rows" EntitySet="Rows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Seances_dbo_Halls_HallId" Association="Self.FK_dbo_Seances_dbo_Halls_HallId">
+      <End Role="Halls" EntitySet="Halls" />
+      <End Role="Seances" EntitySet="Seances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Seances_dbo_Movies_MovieId" Association="Self.FK_dbo_Seances_dbo_Movies_MovieId">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="Seances" EntitySet="Seances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Seats_dbo_Rows_RowId" Association="Self.FK_dbo_Seats_dbo_Rows_RowId">
+      <End Role="Rows" EntitySet="Rows" />
+      <End Role="Seats" EntitySet="Seats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Seats_dbo_Seances_SeanceId" Association="Self.FK_dbo_Seats_dbo_Seances_SeanceId">
+      <End Role="Seances" EntitySet="Seances" />
+      <End Role="Seats" EntitySet="Seats" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
